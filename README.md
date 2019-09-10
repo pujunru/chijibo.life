@@ -1,4 +1,4 @@
 # chijibo.life
 
 ## Frontend Tech Stack
-React, Gatsby, TypeScript, Material-ui
+React, Gatsby, TypeScript, Antd
