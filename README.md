@@ -1,4 +1,5 @@
-# chijibo.life
+# fooder.today
 
 ## Frontend Tech Stack
-React, Gatsby, TypeScript, Antd
+
+`React`, `Gatsby`, `TypeScript`, `Ant Design`
