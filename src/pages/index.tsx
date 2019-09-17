@@ -1,9 +1,9 @@
 import React from "react"
 
-import Route from '../components/App/route'
+import App from '../components/App/App'
 
 const IndexPage = () => (
-  <Route />
+  <App />
 )
 
 export default IndexPage

@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { Layout as AntLayout } from 'antd'
-import Footer from './Footer'
-
-const { "Header": AntHeader, "Content": AntContent, "Footer": AntFooter } = AntLayout
+import Footer from './Dock'
+import PlaceHolder from './_dev/PlaceHolder/PlaceHolder'
+import { WingBlank } from 'antd-mobile'
 
 interface Props {
     hideHeader?: boolean;
@@ -11,17 +10,25 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children, hideHeader = false, hideFooter = false }) => {
+    let header = (
+        <div>
+            <WingBlank>
+                <PlaceHolder />
+            </WingBlank>
+        </div>
+    )
+
     let footer = (
-        <AntFooter>
+        <div>
             <Footer />
-        </AntFooter>
+        </div>
     )
     return (
-        <AntLayout>
-            {!hideHeader && <AntHeader />}
-            <AntContent>{children}</AntContent>
+        <div>
+            {!hideHeader && header}
+            <div>{children}</div>
             {!hideFooter && footer}
-        </AntLayout>
+        </div>
     )
 }
 

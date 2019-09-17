@@ -1,23 +1,19 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import FavInit from './FavInit/favInit'
-import Login from './Login/login'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import HomePage from './HomePage/HomePage'
+import UserInitPage from './UserInitPage/UserInitPage'
+import LoginPage from './LoginPage/loginPage'
 
-import './App.css';
-import Home from './Home/home';
-
-const App: React.FC = () => {
+const AppRoute: React.FC = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path='/' component={Home} />
-                <Route path='/login' component={Login} />
-                {/* <Route path='/discover' component={} /> */}
-                {/* <Route path='/me' component={} /> */}
-                <Route path='/user_init/fav' component={FavInit} />
+                <Route exact path='/' component={HomePage} />
+                <Route path='/userInit' component={UserInitPage} />
+                <Route path='/login' component={LoginPage} />
             </Switch>
         </BrowserRouter>
     )
 }
 
-export default App
+export default AppRoute

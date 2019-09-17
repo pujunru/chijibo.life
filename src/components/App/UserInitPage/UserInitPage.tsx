@@ -19,9 +19,9 @@ const MockFoodType = [
     'Noodle'
 ]
 
-const FavInit: React.FC = () => {
+const UserInitPage: React.FC = () => {
     return (
-        <Layout>
+        <Layout hideFooter hideHeader>
             <Row>
                 {MockFoodCategory.map((tabName: string) => 
                     <Col span={8}>
@@ -35,4 +35,4 @@ const FavInit: React.FC = () => {
     )
 }
 
-export default FavInit
+export default UserInitPage

@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '../common/Layout'
 import { Menu, Input, Button } from 'antd'
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
     return (
         <Layout hideHeader hideFooter>
             <div>
@@ -29,4 +29,4 @@ const Login: React.FC = () => {
     )
 }
 
-export default Login
+export default LoginPage
