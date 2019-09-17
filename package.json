@@ -24,11 +24,14 @@
     "react-helmet": "^5.2.1",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "typescript": "^3.6.2"
   },
   "devDependencies": {
     "@types/react-router-dom": "^4.3.5",
+    "@types/redux-logger": "^3.0.7",
     "prettier": "^1.17.0"
   },
   "keywords": [
