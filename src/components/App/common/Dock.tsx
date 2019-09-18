@@ -1,81 +1,84 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 // import { Menu, Icon } from 'antd'
 import { TabBar, Icon } from 'antd-mobile'
+import { Redirect } from '@reach/router'
+import { withRouter } from 'react-router'
 
+interface ViewList {
+    title: string;
+    key: string;
+    icon: {
+        type: string;
+    };
+    selectedIcon: {
+        background: string;
+    };
+}
 
+const viewList: ViewList[] = [
+    {
+        title: 'fooder', key: 'fooder', icon: { type: 'loading' },
+        selectedIcon: { background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }
+    },
+    {
+        title: 'discover', key: 'discover', icon: { type: 'loading' },
+        selectedIcon: { background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }
+    },
+    {
+        title: 'me', key: 'me', icon: { type: 'loading' },
+        selectedIcon: { background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }
+    },
 
-const Dock: React.FC = (props) => {
+]
 
-    const viewList: string[] = ['fooder', 'discover', 'me']
-    const [selectedTab, setSelectedTab] = useState(0)  // int index
+interface PropsType {
+    match: any;
+    location: any;
+    history: any;
+}
+
+const Dock: React.FC<PropsType> = (props) => {
+
+    const currentModule = useSelector((state: any) => {
+        console.log('state', state);
+        return state.uiReducers.currentModule
+        
+    })
+    
+    // const clearEffect = useEffect(() => {
+    //     props.history.push('/app/fooder')
+    //     return () => {
+            
+    //     };
+    // }, [])
+
+    console.log(currentModule)
 
     return (
-        // <Menu mode='horizontal'>
-        //     <Menu.Item key='fooder'>
-        //         <Icon type='home' theme="twoTone" />
-        //         fooder
-        //     </Menu.Item>
-        //     <Menu.Item key='discover'>
-        //         <Icon type="fire" theme="twoTone" />
-        //         discover
-        //     </Menu.Item>
-        //     <Menu.Item key='me'>
-        //         <Icon type="smile" theme="twoTone" />
-        //         me
-        //     </Menu.Item>
-        // </Menu>
         <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
-            <TabBar >
-                <TabBar.Item
-                    title={viewList[0]}
-                    key={viewList[0]}
-                    icon={<Icon type='loading' />}
-                    selected={selectedTab === 0}
-                    onPress={() => {
-                        setSelectedTab(0)
-                        props.history.push('home')
-                    }}
-                    selectedIcon={<div style={{
-                        width: '22px',
-                        height: '22px',
-                        background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
-                    }}
-                    />}
-                />
-                <TabBar.Item
-                    title={viewList[1]}
-                    key={viewList[1]}
-                    icon={<Icon type='loading' />}
-                    selected={selectedTab === 1}
-                    onPress={() => setSelectedTab(1)}
-                    selectedIcon={
-                        <div style={{
+            <TabBar>
+                {viewList.map((item, index) =>
+                    <TabBar.Item
+                        title={item.title}
+                        key={item.key}
+                        icon={<Icon type={item.icon.type} />}
+                        selected={currentModule === index + 1}
+                        onPress={() => {
+                            props.history.push('/app/' + item.title)
+                        }}
+                        selectedIcon={<div style={{
                             width: '22px',
                             height: '22px',
-                            background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
+                            background: item.selectedIcon.background
                         }}
-                        />
-                    }
-                />
-                <TabBar.Item
-                    title={viewList[2]}
-                    key={viewList[2]}
-                    icon={<Icon type='loading' />}
-                    selected={selectedTab === 2}
-                    onPress={() => setSelectedTab(2)}
-                    selectedIcon={
-                        <div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat'
-                        }}
-                        />
-                    }
-                />
+                        />}
+                    />
+                )}
             </TabBar>
         </div>
     )
 }
 
-export default Dock
+export default withRouter(Dock)
