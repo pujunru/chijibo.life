@@ -28,13 +28,16 @@
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "typescript": "^3.6.2"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@storybook/react": "^5.2.1",
     "@types/react-router-dom": "^4.3.5",
     "@types/redux-logger": "^3.0.7",
-    "prettier": "^1.17.0"
+    "@types/storybook__react": "^4.0.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "prettier": "^1.17.0",
+    "typescript": "^3.6.3"
   },
   "keywords": [
     "gatsby"
@@ -43,6 +46,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
