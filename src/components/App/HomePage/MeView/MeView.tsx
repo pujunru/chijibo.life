@@ -1,15 +1,13 @@
 import { useDispatch } from 'react-redux'
-import { CHANGE_MODULE, Module } from '../../../../constants'
+import { Module } from '../../../../constants'
 import React, { useEffect } from 'react'
+import { changeModule } from 'actions/ui'
 
 const MeView: React.FC = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({
-            type: CHANGE_MODULE,
-            targetModule: Module.ME
-        })
+        dispatch(changeModule(Module.ME))
         return () => {
         };
     }, [])
