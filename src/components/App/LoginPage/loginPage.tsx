@@ -1,31 +1,30 @@
-import React from 'react'
+import React, { useState } from "react"
 
-import Layout from '../common/Layout'
-import { Menu, Input, Button } from 'antd'
+import { InputItem, InputItemPropsType, Button, WingBlank, List } from "antd-mobile"
+
+interface Props {
+    title: string;
+    inputType: any
+}
+
+const InputCard: React.FC<Props> = ({title, inputType}) => {
+    return (
+        <div>
+            <List>
+                <div>{title}</div>
+                <InputItem
+                    placeholder="example@fooder.today"
+                    type={inputType}
+                
+                ></InputItem>
+            </List>
+        </div>
+    )
+}
 
 const LoginPage: React.FC = () => {
     return (
-        <Layout hideHeader hideFooter>
-            <div>
-                <Menu mode="horizontal">
-                    <Menu.Item key='register'>
-                        ...
-                    </Menu.Item>
-                    <Menu.Item key='login'>
-                        ...
-                    </Menu.Item>
-                </Menu>
-            </div>
-            <div>
-                <Input addonBefore='email :' defaultValue='your email address' />
-                <Input.Password addonBefore='password :' />
-            </div>
-
-            <div>
-                <Button type='primary'>Register Now</Button>
-                <Button type='danger'>As Visitor</Button>
-            </div>
-        </Layout>
+        <div></div>
     )
 }
 
